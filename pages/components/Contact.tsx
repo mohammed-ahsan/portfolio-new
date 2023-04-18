@@ -57,7 +57,7 @@ onSubmit={onSubmit}>
   <input className=' outline-none bg-slate-400/10 rounded-sm border-b md:px-6 px-2 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-gray-400 focus:text-gray-400 hover:border-gray-400' {...register("lastName")} placeholder="Luo" />
   <textarea className=' outline-none bg-slate-400/10 rounded-sm border-b md:px-6 px-2 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-gray-400 focus:text-gray-400 hover:border-gray-400' {...register("lastName")} placeholder="Luo" />
 
-      <button className='bg-gray-400 py-5 rounded-md text-gray-900 font-semibold text-lg' >Submit</button>
+      <button className='bg-gray-300 py-5 rounded-md text-gray-900 font-semibold text-lg' >Submit</button>
     </form>
             </div>
             </div>
