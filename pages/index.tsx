@@ -17,15 +17,25 @@ export default function Home() {
      const [id,setId] = React.useState(0)
      let [index,setIndex] = React.useState(false)
       const { scrollY } = useScroll({ container: ref });
-
+      
       useEffect(() => {
-            setId(window.innerHeight)
-            scrollY.on('change', async (y) => {
-                  
-                  if(y>id+86){
+            console.log(window.innerHeight+scrollY.get())
+            setId(window.innerHeight+scrollY.get())
+      },[])
+      useEffect(() => {
+            
+            
+            
+            //console.log(scrollY.getPrevious())
+            scrollY.on('change', (y) => {
+                  //console.log(y)
+                  if(id){
+                        //console.log(id)
+                        
+                  if(y>id){
                         if(!index){
                          setIndex(true)
-                        // console.log(y)
+                         console.log(y,id)
                   }
                         
                   }
@@ -33,10 +43,16 @@ export default function Home() {
                         if(index){
                         setIndex(false)
                         }
-                  }
+                  }}
+            else {
+                  setIndex(false)
+            }
+            })
+                 
                   
-            });
-      }, [])
+            
+     
+      }, [id])
       return (
             <main >
 
