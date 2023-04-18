@@ -54,7 +54,7 @@ export default function Home() {
      
       }, [id])
       return (
-            <main >
+            <main className='' >
 
                   <div id="main" ref={ref} className='h-screen overflow-x-hidden  text-white  snap-y snap-mandatory overflow-y-scroll bg-gray-900 z-0'>
                         <Header/>
@@ -89,17 +89,17 @@ animate={{bottom: index ? '1%' : '-50%'}}
 transition={{duration: 0.5}}
 
 
-className={index?'absolute rounded-lg  bg-gray-900 right-0 left-0 md:left-[85%] mx-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end':'hidden'}>
+className={index?'absolute rounded-lg mx-1 bg-gray-900 right-0 left-0 md:left-[85%] px-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end':'hidden'}>
       <Link href='#home'> 
-        <button className='px-[5px] py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Home</button>
+        <button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Home</button>
         </Link>
        <Link href='#about'>
-        <button className='px-1.5 py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>About</button>
+        <button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>About</button>
         </Link>
-        <Link href='#experience'><button className='px-1.5 py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Experience</button></Link>
-        <Link href='#skills'><button className='px-1.5 py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Skills</button></Link>
-        <Link href='#projects'><button className='px-1.5 py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Projects</button></Link>
-        <Link href='#contact'><button className='px-1.5 py-4 border border-opacity-0 border-gray-900 rounded-full uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Contact</button></Link>                  
+        <Link href='#experience'><button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Experience</button></Link>
+        <Link href='#skills'><button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Skills</button></Link>
+        <Link href='#projects'><button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Projects</button></Link>
+        <Link href='#contact'><button className='px-[0.9vw] py-4 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Contact</button></Link>                  
 </motion.div>
 
             </main>

@@ -24,7 +24,7 @@ function Skill({id,name,icon}: Props) {
         
         <motion.img
         initial={{ x:directionLeft ? -100: 100, opacity: 0 }} 
-        animate={{opacity:1,x:0}}
+        whileInView={{opacity:1,x:0}}
         transition={{duration:1}}
         
         className='rounded-full border border-gray-800 object-cover w-14 h-14 lg:h-24 md:w-20 lg:w-24 md:h-20 xl:w-28 xl:h-28 filter group-hover:grayscale transition duration-300 ease-in-out'
