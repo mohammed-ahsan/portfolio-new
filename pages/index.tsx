@@ -54,7 +54,7 @@ export default function Home() {
      
       }, [id])
       return (
-            <main className='' >
+            <main className='overflow-y-hidden' >
 
                   <div id="main" ref={ref} className='h-screen overflow-x-hidden  text-white  snap-y snap-mandatory overflow-y-scroll bg-gray-900 z-0'>
                         <Header/>
@@ -89,7 +89,7 @@ animate={{bottom: index ? '1%' : '-50%'}}
 transition={{duration: 0.5}}
 
 
-className={index?'absolute border md:mb-2  border-[#F7AB0A]/40 rounded-lg mx-[1.3%] bg-gray-900 right-0 left-0 md:left-[85%] md:p-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end':'hidden'}>
+className={index?'fixed border md:mb-2  border-[#F7AB0A]/40 rounded-lg mx-[1.3%] bg-gray-900 right-0 left-0 md:left-[85%] md:p-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end':'hidden'}>
       <Link href='#home'> 
         <button className='px-[0.9vw]  focus:border-2 focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 py-2 my-2 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Home</button>
         </Link>
