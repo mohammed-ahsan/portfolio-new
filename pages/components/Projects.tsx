@@ -1,18 +1,21 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect } from 'react'
+import { motion,useScroll } from 'framer-motion'
 type Props = {}
 
 function Projects({}: Props) {
+  
+
   const projects = [{title:'a',image:'https://i.ibb.co/2t2r9R6/icon.png',description:'loreum ipsum'}, 
   {title:'b',image:'https://i.ibb.co/2t2r9R6/icon.png',description:'b'}, ]
+ 
   return (
-    <motion.div
+    <motion.div 
     initial={{  opacity: 0 }} 
         transition={{duration:1.5}}
         whileInView={{opacity:1}}
     className='w-screen justify-evenly overflow-hidden mx-auto items-center  max-w-full flex relative flex-col text-left md:flex-row z-0 h-screen'>
             <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>projects</h3>
-            <div className='relative w-full h-[90%] flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20'>
+            <div   className='relative w-full h-[80vh] flex items-center  overflow-x-scroll overflow-y-hidden snap-x  z-20'>
             {projects.map((project,index) => (
             
               <div key={index} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'>
