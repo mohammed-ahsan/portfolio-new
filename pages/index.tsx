@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { motion, useScroll } from 'framer-motion'
 import Link from 'next/link'
+import { AnimatePresence } from 'framer-motion'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
                   if(id){
                         //console.log(id)
                         
-                  if(y>id-3){
+                  if(y>id-5){
                         if(!index){
                          setIndex(true)
                          console.log(y,id)
@@ -82,14 +83,19 @@ export default function Home() {
                         </section>
                         
                   </div>
-                  <motion.div
+                  <AnimatePresence
+                  
+                  >
+             { index?    <motion.div
 initial={{bottom: '-50%'}}
 animate={{bottom: index ? '1%' : '-50%'}}
-
+exit={{
+      bottom:'-50%'
+}}
 transition={{duration: 0.5}}
 
 
-className={index?'fixed border md:mb-2  border-[#F7AB0A]/40 rounded-lg mx-[1.3%] bg-gray-900 right-0 left-0 md:left-[85%] md:p-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end':'hidden'}>
+className={'fixed border md:mb-2  border-[#F7AB0A]/40 rounded-lg mx-[1.3%] bg-gray-900 right-0 left-0 md:left-[85%] md:p-2  md:pr-2 flex flex-row md:flex-col justify-center md:right-5 items-end'}>
       <Link href='#home'> 
         <button className='px-[0.9vw]  focus:border-2 focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 py-2 my-2 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Home</button>
         </Link>
@@ -100,7 +106,7 @@ className={index?'fixed border md:mb-2  border-[#F7AB0A]/40 rounded-lg mx-[1.3%]
         <Link href='#skills'><button className='px-[0.9vw] focus:border focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 py-2 my-2 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Skills</button></Link>
         <Link href='#projects'><button className='px-[0.9vw] focus:border focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 py-2 my-2 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Projects</button></Link>
         <Link href='#contact'><button className='px-[0.9vw] focus:border focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40 py-2 my-2 border border-opacity-0 border-gray-900 rounded-lg uppercase text-xs text-gray-500 transition-all tracking-widest hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40'>Contact</button></Link>                  
-</motion.div>
+</motion.div>:null}</AnimatePresence>
 
             </main>
       )

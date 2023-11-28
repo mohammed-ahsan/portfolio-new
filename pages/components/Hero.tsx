@@ -10,7 +10,7 @@ type Props = {}
 const Hero = (props: Props) => {
   
   
-    const [text,count] = useTypewriter({words:['hello'],loop: true, delaySpeed: 2000})
+    const [text,count] = useTypewriter({words:['<Programmer/>','<PhysicsEnthusiast/>','<Gamer/>'],loop: true, delaySpeed: 1000})
   return (<div className='h-screen   flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
      <BackgroundCircles/>
       <Image className='rounded-full mx-auto object-cover' alt="profile.gif" height={150} width={150} src={profilePic} />

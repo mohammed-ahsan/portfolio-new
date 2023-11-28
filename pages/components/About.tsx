@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-
+import AboutMe from "../../assets/aboutme.svg"
 type Props = {}
 
 function About({ }: Props) {
@@ -15,13 +15,13 @@ function About({ }: Props) {
                 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                src="https://media.giphy.com/media/3o7TKsQ8UQhIb9WYBa/giphy.gif"
+                src={'/aboutme.svg'}
                 className='-mb-[120px] md:mb-0 flex-shrink-0 w-[170px] h-[170px]  rounded-full 
-        object-cover  md:rounded-lg md:w-64 md:h-95  xl:h-[500px]'
+        object-cover bg-white md:rounded-lg md:w-64 md:h-95  xl:h-[500px]'
             />
             <div className='space-y-10 px-0 md:px-10'>
-                <h4 className='text-4xl font-semibold'>Lorem ipsum dolor sit amet.</h4>
-                <p className='px-2 text-gray-500 break-words text-lg'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, eveniet enim minima temporibus totam tempora velit cumque odit facere doloribus nesciunt quibusdam! Magnam ad esse ex, sunt eos veritatis voluptates, id libero maiores eius fugiat aliquam laborum porro hic inventore aperiam blanditiis minima architecto beatae? Error accusamus quis beatae deserunt?
+                <h4 className='text-4xl font-semibold'>Expertise in Full-Stack Development</h4>
+                <p className='px-2 text-gray-500 break-words text-lg'>My proficiency extends across a range of languages and frameworks, including but not limited to JavaScript (React, Node.js), Rust, PHP and databases such as MongoDB, PostgreSQL and SQL. Whether working independently or as part of a collaborative team, I am driven by a passion for excellence and a commitment to creating software solutions that make a positive impact.
                 </p>
             </div>
 
