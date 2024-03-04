@@ -5,16 +5,16 @@ type Props = {}
 function Projects({}: Props) {
   
 
-  const projects = [{title:'SparkMesh Tech',image:'https://i.ibb.co/2t2r9R6/icon.png',description:'loreum ipsum'}, 
-  {title:'QuickDonorBD',image:'https://i.ibb.co/2t2r9R6/icon.png',description:'b'},
-  {title:'XpoBD',image:'https://i.ibb.co/2t2r9R6/icon.png',description:'b'},
+  const projects = [{title:'SparkMesh Tech',image:'https://i.ibb.co/yXVPH4Q/spark-mesh-logo.jpg',description:'Agency Portfolio'}, 
+  {title:'QuickDonorBD',image:'https://i.ibb.co/FXgJ4Mf/logo.png',description:'Blood Bank Management System'},
+  {title:'Ecommerce',image:'https://i.ibb.co/xLBpgK0/400023959-781280397346751-6655934383835089507-n.jpg',description:'Full-Stack Ecommerce Web App'},
   
 ]
  
   return (
     <motion.div 
     initial={{  opacity: 0 }} 
-        transition={{duration:1.5}}
+        transition={{duration:0.5}}
         whileInView={{opacity:1}}
     className='w-screen justify-evenly overflow-hidden mx-auto items-center  max-w-full flex relative flex-col text-left md:flex-row z-0 h-screen'>
             <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Freelance projects</h3>
@@ -40,13 +40,13 @@ function Projects({}: Props) {
             </div>
             <motion.div
             initial={{ y: 300, opacity: 0 }}
-            transition={{duration:1.5}}
+            transition={{duration:0.5}}
             whileInView={{opacity:0.5, y:0, skewY: -12}}
             className='w-full absolute top-[30%] bg-gray-800  left-0 h-[300px] '
             />
             <motion.div
             initial={{ y: -300, opacity: 0 }}
-            transition={{duration:1.5}}
+            transition={{duration:0.5}}
             whileInView={{opacity:0.5, y:0, skewY: -12}}
             className='w-full absolute top-[30%] bg-gray-800  left-0 h-[300px] '
             />

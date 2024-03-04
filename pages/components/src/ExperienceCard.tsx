@@ -11,9 +11,10 @@ function ExperienceCard({}: Props) {
         <div className='flex flex-row space-x-2'>
        
         <div>Software Engineer</div></div>
+
         <div className='uppercase pt-5 text-gray-300'>Sparkmesh Tech</div>
-        <p>09/2022 - present</p>
-       
+       <div>09/22 - 2/24</div>
+
         <ul className='list-disc space-y-4 ml-5'>
             <li>React Native</li>
             <li>Next.js
