@@ -11,17 +11,14 @@ function ExperienceCard({}: Props) {
         <div className='flex flex-row space-x-2'>
        
         <div>Software Engineer</div></div>
-        <div className='uppercase pt-5 text-gray-300'>QuickBhai</div>
-        <p>02/2023 - present</p>
-        <p>
-
-        Food Delivery Startup Based in Kushtia, Bangladesh
-        </p>
+        <div className='uppercase pt-5 text-gray-300'>Sparkmesh Tech</div>
+        <p>09/2022 - present</p>
+       
         <ul className='list-disc space-y-4 ml-5'>
-            <li>Develop and maintain their Customer, Restaurant and Rider app with bare React Native.</li>
-            <li>Develop and maintain their Prisma,NodeJs,Mysql backend.
+            <li>React Native</li>
+            <li>Next.js
             </li>
-            <li>Integrated Sanity for CMS</li>
+            <li>Express.js</li>
             
             
         </ul>

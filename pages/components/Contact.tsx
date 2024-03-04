@@ -41,10 +41,10 @@ function Contact({}: Props) {
 <p className='text-gray-400'>+8801521421675</p></div>
 <div className='flex flex-row items-center'>
 <MailIcon className='h-6 w-6 text-gray-500 inline-block mr-2'/>
-<p className='text-gray-400'>+8801521421675</p></div>
+<p className='text-gray-400'>earth.ahsan@gmail.com</p></div>
 <div className='flex flex-row items-center'>
 <LocationMarkerIcon className='h-6 w-6 text-gray-500 inline-block mr-2'/>
-<p className='text-gray-400'>+8801521421675</p></div>
+<p className='text-gray-400'>Dhaka, Bangladesh</p></div>
 <form 
 className='flex max-w-[95%]   flex-col space-y-2 '
 onSubmit={onSubmit}>
