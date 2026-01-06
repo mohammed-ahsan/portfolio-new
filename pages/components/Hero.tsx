@@ -41,7 +41,7 @@ const Hero = (props: Props) => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'
         >
-          React Native Developer
+          Software Developer
         </motion.h2>
 
         <motion.h1
