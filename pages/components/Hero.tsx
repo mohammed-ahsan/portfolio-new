@@ -22,11 +22,11 @@ const Hero = (props: Props) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
         className='relative z-20'
       >
         <Image
-          className='rounded-full mx-auto object-cover border-4 border-[#F7AB0A]/30'
+          className='rounded-full mx-auto object-cover border-4 border-[#F7AB0A]/30 shadow-2xl shadow-[#F7AB0A]/20'
           alt='profile.gif'
           height={150}
           width={150}
@@ -61,19 +61,19 @@ const Hero = (props: Props) => {
           className='flex flex-wrap justify-center gap-3 pt-8'
         >
           <Link href='#about'>
-            <button className='heroButton px-6 py-3 text-sm'>About</button>
+            <button className='heroButton'>About</button>
           </Link>
           <Link href='#experience'>
-            <button className='heroButton px-6 py-3 text-sm'>Experience</button>
+            <button className='heroButton'>Experience</button>
           </Link>
           <Link href='#skills'>
-            <button className='heroButton px-6 py-3 text-sm'>Skills</button>
+            <button className='heroButton'>Skills</button>
           </Link>
           <Link href='#education'>
-            <button className='heroButton px-6 py-3 text-sm'>Education</button>
+            <button className='heroButton'>Education</button>
           </Link>
           <Link href='#contact'>
-            <button className='heroButton px-6 py-3 text-sm'>Contact</button>
+            <button className='heroButton'>Contact</button>
           </Link>
         </motion.div>
       </div>

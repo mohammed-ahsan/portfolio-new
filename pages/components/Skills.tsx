@@ -39,29 +39,40 @@ function Skills({}: Props) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.03,
       },
     },
   }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.3
+      }
+    },
   }
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 bg-gray-900 pt-20 sm:pt-24 pb-10'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className='flex flex-col relative min-h-screen items-center justify-center px-4 md:px-10 py-24 max-w-7xl mx-auto'
+    >
       <motion.h3
-        className='uppercase tracking-[15px] sm:tracking-[20px] text-gray-500 text-xl sm:text-2xl font-semibold mb-10 sm:mb-16'
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, margin: '-100px' }}
-        variants={itemVariants}
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className='section-title'
       >
         Skills
       </motion.h3>
+      
       <motion.div
-        className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 max-w-7xl mx-auto w-full'
+        className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 w-full mt-12'
         initial='hidden'
         whileInView='visible'
         viewport={{ once: true, margin: '-100px' }}
@@ -73,7 +84,7 @@ function Skills({}: Props) {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
 

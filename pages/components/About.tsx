@@ -39,26 +39,26 @@ function About({}: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className='flex flex-col relative min-h-screen items-center justify-center px-4 md:px-10 py-24 max-w-7xl mx-auto'
+      className='section-container'
     >
       <motion.h3 
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl font-semibold'
+        transition={{ duration: 0.6 }}
+        className='section-title'
       >
         About
       </motion.h3>
 
-      <div className='w-full space-y-12 mt-8'>
+      <div className='w-full space-y-12 mt-12'>
         {/* Professional Summary */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className='max-w-5xl mx-auto'
         >
-          <div className='relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-gray-700/50 shadow-2xl'>
+          <div className='relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm px-8 py-6 rounded-2xl border border-gray-700/50 shadow-2xl'>
             <div className='absolute inset-0 bg-gradient-to-br from-[#F7AB0A]/5 to-transparent rounded-2xl' />
             <div className='relative z-10 space-y-4'>
               <h4 className='text-2xl md:text-3xl font-bold text-white mb-4'>
@@ -82,7 +82,7 @@ function About({}: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto'
         >
           {stats.map((stat, index) => (
@@ -106,7 +106,7 @@ function About({}: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto'
         >
           {expertise.map((area, index) => (
@@ -146,7 +146,7 @@ function About({}: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className='max-w-5xl mx-auto bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50'
         >
           <h4 className='text-xl md:text-2xl font-bold text-white mb-6 text-center'>
@@ -204,9 +204,9 @@ function About({}: Props) {
 
         {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className='text-center max-w-3xl mx-auto'
         >
           <p className='text-gray-400 text-sm md:text-base italic'>

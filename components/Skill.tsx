@@ -11,12 +11,12 @@ type Props = {
 function Skill({ id, name, icon }: Props) {
   return (
     <motion.div
-      className='group flex flex-col items-center justify-center space-y-2 sm:space-y-3 p-4 sm:p-6 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-[#F7AB0A]/60 backdrop-blur-sm'
+      className='group flex flex-col items-center justify-center space-y-2 sm:space-y-3 p-4 sm:p-6 rounded-xl card-gradient backdrop-blur-sm cursor-pointer'
       whileHover={{ 
-        scale: 1.08,
-        y: -8
+        scale: 1.05,
+        y: -5
       }}
-      whileTap={{ scale: 0.95 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ 
         type: "spring",
         stiffness: 300,
@@ -26,13 +26,11 @@ function Skill({ id, name, icon }: Props) {
       <motion.div
         className='relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center'
         whileHover={{ 
-          rotate: 15,
+          rotate: [0, -10, 10, -10, 0],
           scale: 1.1
         }}
         transition={{ 
-          type: "spring",
-          stiffness: 200,
-          damping: 15
+          duration: 0.5
         }}
       >
         <motion.div

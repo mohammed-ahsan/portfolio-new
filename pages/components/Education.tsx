@@ -19,12 +19,17 @@ function Education({}: Props) {
   ]
 
   return (
-    <div className='w-screen overflow-hidden justify-center items-center mx-auto max-w-7xl flex relative flex-col text-center px-4 md:px-10 h-screen'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className='flex flex-col relative min-h-screen items-center justify-center px-4 md:px-10 py-24 max-w-7xl mx-auto'
+    >
       <motion.h3
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl font-semibold'
+        transition={{ duration: 0.6 }}
+        className='section-title'
       >
         Education
       </motion.h3>
@@ -32,20 +37,20 @@ function Education({}: Props) {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className='mt-32 max-w-2xl mx-auto'
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className='w-full max-w-3xl mt-12'
       >
         {education.map((edu, index) => (
           <motion.div
             key={index}
             whileHover={{ scale: 1.02, y: -5 }}
-            transition={{ duration: 0.3 }}
-            className='bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-[#F7AB0A]/50 overflow-hidden'
+            transition={{ type: "spring", stiffness: 300 }}
+            className='card-gradient rounded-2xl p-8 overflow-hidden'
           >
             <motion.div
-              initial={{ opacity: 0, rotate: -180 }}
-              whileInView={{ opacity: 1, rotate: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className='mb-6 flex justify-center'
             >
               <div className='w-24 h-24 rounded-full bg-gradient-to-br from-[#F7AB0A] to-[#FF6B6B] flex items-center justify-center'>
@@ -53,10 +58,31 @@ function Education({}: Props) {
               </div>
             </motion.div>
 
-            <div className='space-y-3'>
-              <h4 className='text-xl md:text-2xl font-bold text-white'>{edu.degree}</h4>
-              <div className='text-[#F7AB0A] font-semibold text-lg'>{edu.institution}</div>
-              <div className='text-gray-400'>{edu.period}</div>
+            <div className='space-y-3 text-center'>
+              <motion.h4
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className='text-xl md:text-2xl font-bold text-white'
+              >
+                {edu.degree}
+              </motion.h4>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className='text-[#F7AB0A] font-semibold text-lg'
+              >
+                {edu.institution}
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className='text-gray-400'
+              >
+                {edu.period}
+              </motion.div>
             </div>
 
             <div className='mt-6 pt-6 border-t border-gray-700'>
@@ -66,10 +92,10 @@ function Education({}: Props) {
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    className='flex items-start'
+                    transition={{ duration: 0.3, delay: 0.7 + idx * 0.1 }}
+                    className='flex items-start hover:text-gray-300 transition-colors duration-300'
                   >
-                    <span className='text-[#F7AB0A] mr-2'>•</span>
+                    <span className='text-[#F7AB0A] mr-2 flex-shrink-0'>•</span>
                     {detail}
                   </motion.li>
                 ))}
@@ -78,7 +104,7 @@ function Education({}: Props) {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
 

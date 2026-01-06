@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type Props = {}
 
@@ -23,6 +23,8 @@ interface Experience {
 }
 
 function Experience({}: Props) {
+  const [expandedCompany, setExpandedCompany] = useState<number | null>(0)
+
   const experiences: Experience[] = [
     {
       company: 'Next Level Media LLC',
@@ -106,45 +108,46 @@ function Experience({}: Props) {
     <motion.div 
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className='w-screen justify-evenly mx-auto items-center max-w-full flex relative flex-col text-center md:text-left h-screen overflow-hidden'
+      transition={{ duration: 1 }}
+      className='section-container'
     >
       <motion.h3 
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'
+        transition={{ duration: 0.6 }}
+        className='section-title'
       >
         Experience
       </motion.h3>
 
-      <div className='w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 z-20 px-10'>
+      <div className='w-full max-w-6xl mt-12 space-y-6'>
         {experiences.map((experience, expIndex) => (
-          <React.Fragment key={expIndex}>
-            {/* Company Overview Slide */}
+          <motion.div
+            key={expIndex}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: expIndex * 0.1 }}
+            className='w-full'
+          >
+            {/* Company Header Card */}
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-10 md:p-20 h-screen'
+              onClick={() => setExpandedCompany(expandedCompany === expIndex ? null : expIndex)}
+              whileHover={{ scale: 1.01 }}
+              className='card-gradient rounded-2xl p-6 md:p-8 cursor-pointer'
             >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className='text-center space-y-6'
-              >
+              <div className='flex flex-col md:flex-row items-start md:items-center gap-6'>
                 {/* Company Logo */}
                 <a 
                   href={experience.companyLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className='group inline-block'
+                  onClick={(e) => e.stopPropagation()}
+                  className='group flex-shrink-0'
                 >
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className='w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl bg-white shadow-2xl flex items-center justify-center p-4 group-hover:shadow-[#F7AB0A]/50 transition-all duration-300'
+                    whileHover={{ scale: 1.05, rotate: 3 }}
+                    whileTap={{ scale: 0.98 }}
+                    className='w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white shadow-lg flex items-center justify-center p-3 group-hover:shadow-[#F7AB0A]/50 transition-all duration-300'
                   >
                     <img 
                       src={experience.companyLogo} 
@@ -154,173 +157,144 @@ function Experience({}: Props) {
                   </motion.div>
                 </a>
 
-                <div>
+                {/* Company Info */}
+                <div className='flex-1'>
                   <a 
                     href={experience.companyLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className='hover:text-[#F7AB0A] transition-colors duration-300'
                   >
-                    <h4 className='text-4xl md:text-5xl font-bold text-white mb-3'>
+                    <h4 className='text-2xl md:text-3xl font-bold text-white mb-2'>
                       {experience.company}
                     </h4>
                   </a>
-                  <p className='text-2xl md:text-3xl text-[#F7AB0A] font-semibold mb-2'>
+                  <p className='text-lg md:text-xl text-[#F7AB0A] font-semibold mb-1'>
                     {experience.role}
                   </p>
-                  <p className='text-gray-400 text-lg'>
-                    {experience.period} • {experience.location}
-                  </p>
+                  <div className='flex flex-wrap items-center gap-3 text-gray-400 text-sm'>
+                    <span className='flex items-center gap-1'>
+                      <span className='w-1.5 h-1.5 rounded-full bg-[#F7AB0A]' />
+                      {experience.period}
+                    </span>
+                    <span>•</span>
+                    <span>{experience.location}</span>
+                    <span>•</span>
+                    <span className='text-[#F7AB0A]'>{experience.projects.length} Project{experience.projects.length > 1 ? 's' : ''}</span>
+                  </div>
                 </div>
 
-                <div className='bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-gray-700'>
-                  <h5 className='text-2xl font-bold text-white mb-4'>
-                    Projects Developed
-                  </h5>
-                  <div className='space-y-3'>
-                    {experience.projects.map((project, idx) => (
+                {/* Expand/Collapse Icon */}
+                <motion.div
+                  animate={{ rotate: expandedCompany === expIndex ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className='flex-shrink-0'
+                >
+                  <svg className='w-6 h-6 text-[#F7AB0A]' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+                  </svg>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Projects List - Expandable */}
+            <AnimatePresence>
+              {expandedCompany === expIndex && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className='overflow-hidden'
+                >
+                  <div className='mt-4 space-y-4'>
+                    {experience.projects.map((project, projectIndex) => (
                       <motion.div
-                        key={idx}
+                        key={projectIndex}
                         initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + idx * 0.1 }}
-                        className='flex items-center gap-3'
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: projectIndex * 0.1 }}
+                        className='card-gradient rounded-xl p-6 md:p-8'
                       >
-                        <div className='w-12 h-12 rounded-lg bg-white flex items-center justify-center p-1.5 flex-shrink-0'>
-                          <img 
-                            src={project.logo} 
-                            alt={project.name}
-                            className='w-full h-full object-contain'
-                          />
-                        </div>
-                        <div className='text-left'>
-                          <p className='text-white font-semibold'>{project.name}</p>
-                          <p className='text-gray-400 text-sm'>{project.description}</p>
+                        <div className='flex flex-col md:flex-row gap-6'>
+                          {/* Project Logo */}
+                          <a 
+                            href={project.appLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className='group flex-shrink-0'
+                          >
+                            <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.98 }}
+                              className='relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white shadow-lg flex items-center justify-center p-3 group-hover:shadow-[#F7AB0A]/50 transition-all duration-300'
+                            >
+                              <img 
+                                src={project.logo} 
+                                alt={project.name}
+                                className='w-full h-full object-contain'
+                              />
+                            </motion.div>
+                          </a>
+
+                          {/* Project Details */}
+                          <div className='flex-1 space-y-4'>
+                            <div>
+                              <a 
+                                href={project.appLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className='group inline-flex items-center gap-2 hover:text-[#F7AB0A] transition-colors duration-300'
+                              >
+                                <h5 className='text-xl md:text-2xl font-bold text-white'>
+                                  {project.name}
+                                </h5>
+                                <svg className='w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14' />
+                                </svg>
+                              </a>
+                              <p className='text-gray-400 text-sm md:text-base mt-1 italic'>
+                                {project.description}
+                              </p>
+                            </div>
+
+                            {/* Highlights */}
+                            <ul className='space-y-2'>
+                              {project.highlights.map((highlight, idx) => (
+                                <li
+                                  key={idx}
+                                  className='flex items-start text-gray-400 text-sm md:text-base'
+                                >
+                                  <span className='text-[#F7AB0A] mr-2 mt-1 flex-shrink-0'>▸</span>
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            {/* Tech Stack */}
+                            <div className='flex flex-wrap gap-2'>
+                              {project.skills.map((skill, idx) => (
+                                <motion.span
+                                  key={idx}
+                                  whileHover={{ scale: 1.05, backgroundColor: '#F7AB0A', color: '#1f2937' }}
+                                  className='px-3 py-1.5 bg-gray-700/50 text-gray-300 text-xs md:text-sm rounded-full font-medium cursor-default transition-all duration-300 border border-gray-600/50'
+                                >
+                                  {skill}
+                                </motion.span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </motion.div>
                     ))}
                   </div>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className='text-[#F7AB0A] mt-6 text-sm'
-                  >
-                    Swipe to explore each project →
-                  </motion.p>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Individual Project Slides */}
-            {experience.projects.map((project, projectIndex) => (
-              <motion.div
-                key={`${expIndex}-${projectIndex}`}
-                initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: projectIndex * 0.1 }}
-                className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-10 md:p-20 h-screen'
-              >
-                {/* App Logo and Link */}
-                <a 
-                  href={project.appLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className='group'
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className='relative'
-                  >
-                    <div className='w-32 h-32 md:w-40 md:h-40 xl:w-48 xl:h-48 rounded-2xl bg-white shadow-2xl flex items-center justify-center p-6 group-hover:shadow-[#F7AB0A]/50 transition-all duration-300'>
-                      <img 
-                        src={project.logo} 
-                        alt={project.name}
-                        className='w-full h-full object-contain'
-                      />
-                    </div>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      className='absolute -bottom-3 -right-3 bg-[#F7AB0A] text-gray-900 rounded-full px-4 py-2 text-xs font-bold shadow-lg'
-                    >
-                      View Live →
-                    </motion.div>
-                  </motion.div>
-                </a>
-
-                {/* Company Badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className='text-sm text-gray-500 uppercase tracking-wider'
-                >
-                  {experience.company}
                 </motion.div>
-
-                {/* Project Details */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className='max-w-4xl space-y-4 px-5 md:px-10'
-                >
-                  <div className='bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700'>
-                    <h5 className='text-xl md:text-2xl font-bold text-[#F7AB0A] mb-3'>
-                      {project.name}
-                    </h5>
-                    <p className='text-gray-300 text-sm md:text-base mb-4 italic'>
-                      {project.description}
-                    </p>
-                    
-                    {/* Highlights */}
-                    <ul className='space-y-2 mb-4'>
-                      {project.highlights.map((highlight, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.4 + idx * 0.1 }}
-                          className='flex items-start text-gray-400 text-sm md:text-base'
-                        >
-                          <span className='text-[#F7AB0A] mr-2 mt-1'>▸</span>
-                          {highlight}
-                        </motion.li>
-                      ))}
-                    </ul>
-
-                    {/* Tech Stack */}
-                    <div className='flex flex-wrap gap-2 justify-center md:justify-start'>
-                      {project.skills.map((skill, idx) => (
-                        <motion.span
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + idx * 0.05 }}
-                          whileHover={{ scale: 1.1, backgroundColor: '#F7AB0A', color: '#1f2937' }}
-                          className='px-3 py-1.5 bg-gray-700 text-gray-300 text-xs md:text-sm rounded-full font-medium cursor-default transition-all'
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </React.Fragment>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
-
-      {/* Background Decorations */}
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 0.1, y: 0 }}
-        transition={{ duration: 1.5 }}
-        className='w-full absolute top-[30%] bg-[#F7AB0A]/20 left-0 h-[400px] -skew-y-12 z-0'
-      />
     </motion.div>
   )
 }
