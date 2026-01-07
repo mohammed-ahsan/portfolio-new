@@ -61,7 +61,7 @@ function Experience({}: Props) {
         {
           name: 'Multi-Vendor Food Delivery',
           logo: '/images/Store_Hub_logo_food_delivery.avif',
-          appLink: 'https://storehub.com',
+          appLink: 'https://www.storehub.com',
           skills: ['React Native', 'Next.js 14', 'ExpressJS', 'FastAPI', 'Python', 'Redis', 'Socket.IO', 'Google Maps API'],
           description: 'Complete food delivery ecosystem with customer, restaurant, and rider applications',
           highlights: [
