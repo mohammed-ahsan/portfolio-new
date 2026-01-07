@@ -75,7 +75,7 @@ function Experience({}: Props) {
         {
           name: 'AI Image Generation SaaS',
           logo: '/images/snapwiz_logo.webp',
-          appLink: 'https://enatega.com',
+          appLink: 'https://snapwiz.io',
           skills: ['Next.js 14', 'FastAPI', 'Python', 'Stable Diffusion XL', 'Cloud GPU', 'Redis'],
           description: 'AI-powered image generation platform with custom model training capabilities',
           highlights: [
@@ -89,7 +89,7 @@ function Experience({}: Props) {
         {
           name: 'Lawyer\'s Forum - Immigration Law App',
           logo: '/images/immigrationquestion_lawyers_forum_logo.webp',
-          appLink: 'https://play.google.com/store/apps/details?id=com.lawyersforum',
+          appLink: 'https://immigrationquestions.com',
           skills: ['React Native', 'Spring Boot', 'RESTful APIs', 'JWT', 'Push Notifications', 'Firebase'],
           description: 'Multi-platform mobile application for US-based immigration law firm',
           highlights: [
